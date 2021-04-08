@@ -67,7 +67,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // 'timezone' => 'UTC',
+    'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,8 +107,8 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
-
+    // 'faker_locale' => 'en_US',
+    'faker_locale' => 'ja_JP',
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

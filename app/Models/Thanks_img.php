@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Handsign extends Model
+class Thanks_img extends Model
 {
     use HasFactory;
 
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at',
-    ];
+    protected $table = "thanks_imgs";
+    protected $fillable = ["img_name", "img_file"];
 }

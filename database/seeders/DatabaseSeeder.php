@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        if (\App::environment('local')) {
+            $this->call(LocalDevelopSeeder::class); // Local開発用
+    
+        } elseif (\App::environment('production')) {
+            $this->call(ProductionInitSeeder::class); // Production用の初期データ
+        }
     }
 }
