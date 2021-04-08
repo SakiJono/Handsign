@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HandsignController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\ThanksimgController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,18 @@ use App\Http\Controllers\VideoController;
 */
 
 Route::resource('video', VideoController::class);
-Route::resource('tanks_img', HandsignController::class);
+
+Route::resource('thanks_img', ThanksimgController::class);
+
+Route::post(
+    'thanks_img',
+    [App\Http\Controllers\ThanksimgController::class, "upload"]
+)->middleware(['auth'])->name("thanks_img");
+
+// Route::get(
+//     'thanks_img',
+//     [App\Http\Controllers\ThanksimgController::class, "show"]
+// )->middleware(['auth'])->name("thanks_img_index");
 
 Route::get('/', function () {
     return view('welcome');

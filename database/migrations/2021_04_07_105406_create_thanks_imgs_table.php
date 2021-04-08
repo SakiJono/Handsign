@@ -15,8 +15,9 @@ class CreateThanksImgsTable extends Migration
     {
         Schema::create('thanks_imgs', function (Blueprint $table) {
             $table->id();
-            $table->string('img_name');
-            $table->string('img_file');
+            $table->string('file_title');
+            $table->string('file_name');
+            $table->string('file_path');
             $table->timestamps();
         });
     }

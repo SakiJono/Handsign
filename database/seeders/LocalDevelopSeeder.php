@@ -63,16 +63,19 @@ class LocalDevelopSeeder extends Seeder
         ]);
 
         \App\Models\Thanks_img::create([
-            'img_name' => 'Thanks1',
-            'img_file' => 'Thanks1.jpg',
+            'file_name' => 'Thanks1',
+            'file_path' => 'Thanks1.jpg',
+            'file_title' => 'file_titleThanks1.jpg',
         ]);
         \App\Models\Thanks_img::create([
-            'img_name' => 'Thanks2',
-            'img_file' => 'Thanks2.jpg',
+            'file_name' => 'Thanks2',
+            'file_path' => 'Thanks2.jpg',
+            'file_title' => 'file_titleThanks2.jpg',
         ]);
         \App\Models\Thanks_img::create([
-            'img_name' => 'Thanks3',
-            'img_file' => 'Thanks3.jpg',
+            'file_name' => 'Thanks3',
+            'file_path' => 'Thanks3.jpg',
+            'file_title' => 'file_titleThanks3.jpg',
         ]);
 
         \App\Models\Video::create([

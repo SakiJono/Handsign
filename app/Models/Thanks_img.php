@@ -10,5 +10,5 @@ class Thanks_img extends Model
     use HasFactory;
 
     protected $table = "thanks_imgs";
-    protected $fillable = ["img_name", "img_file"];
+    protected $fillable = ["file_name", "file_path", 'file_title',];
 }

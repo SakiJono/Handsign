@@ -10,14 +10,14 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
             @include('common.errors')
-                <form class="mb-6" action="{{ route('tanks_img.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="mb-6" action="{{ route('thanks_img') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label for="filename">ファイル名</label>
-                    <input type="text" name="filename" id="filename">
+                    <label for="file_title">ファイル名</label>
+                    <input type="text" name="file_title" id="file_title" accept="image/png, image/jpg,image/jpeg, image/gif">
                 </div>
                 <div>
-                    <input type="file" name="tanksimg" id="tanksimg">
+                    <input type="file" name="thanksimg" id="thanksimg">
                 </div>
                 <button type="submit"> Create </button>
                 </form>
@@ -29,7 +29,7 @@
 
 <script>
     // プレビュー
-    const file1 = document.getElementById('tanksimg');
+    const file1 = document.getElementById('thanksimg');
     const preview = document.getElementById('preview');
     file1.onchange = function(e) {
         var file = e.target.files[0];

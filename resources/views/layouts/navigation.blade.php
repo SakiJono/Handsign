@@ -22,7 +22,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('tanks_img.index')" :active="request()->routeIs('tanks_img.index')">
+                    <x-nav-link :href="route('thanks_img.index')" :active="request()->routeIs('tanks_img.index')">
                         {{ __('イラストページ') }}
                     </x-nav-link>
                 </div>
@@ -83,7 +83,7 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('tanks_img.index')" :active="request()->routeIs('tanks_img.index')">
+            <x-responsive-nav-link :href="route('thanks_img.index')" :active="request()->routeIs('tanks_img.index')">
                 {{ __('イラストページ') }}
             </x-responsive-nav-link>
         </div>
