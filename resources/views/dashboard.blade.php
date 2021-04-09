@@ -14,4 +14,29 @@
             </div>
         </div>
     </div>
+    <p>募集中の手話表現</p>
+        @foreach($handsigns as $handsign)
+            <a href="{{ route('thanks_img.show',$handsign->id) }}">
+                <div style="width: 18rem; float:left; margin: 16px;">
+                <img src="{{ Storage::url($handsign->file_path) }}" style="width:100%;"/>
+                <p>{{ $handsign->file_title }}</p>
+                </div>
+            </a>
+        @endforeach
+
+    <p>投稿したビデオ</p>
+        @foreach($videos as $video)
+                <div style="width: 18rem; float:left; margin: 16px;">
+                <img src="{{ Storage::url($video->file_path) }}" style="width:100%;"/>
+                <p>{{ $video->file_title }}</p>
+                </div>
+        @endforeach
+
+    <p>イラスト一覧</p>
+        @foreach($tanksimgs as $tanksimg)
+                <div style="width: 18rem; float:left; margin: 16px;">
+                <img src="{{ Storage::url($tanksimg->file_path) }}" style="width:100%;"/>
+                <p>{{ $tanksimg->file_title }}</p>
+                </div>
+        @endforeach
 </x-app-layout>

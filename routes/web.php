@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HandsignController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ThanksimgController;
+use App\Http\Controllers\Controller;
+use App\Models\Handsign;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,26 +18,28 @@ use App\Http\Controllers\ThanksimgController;
 |
 */
 
+Route::resource('dashboard', MypageController::class);
 Route::resource('video', VideoController::class);
-
+Route::resource('handsign', HandsignController::class);
 Route::resource('thanks_img', ThanksimgController::class);
+
+Route::post(
+    'handsign',
+    [App\Http\Controllers\HandsignController::class, "upload"]
+)->middleware(['auth'])->name("handsign");
 
 Route::post(
     'thanks_img',
     [App\Http\Controllers\ThanksimgController::class, "upload"]
 )->middleware(['auth'])->name("thanks_img");
 
-// Route::get(
-//     'thanks_img',
-//     [App\Http\Controllers\ThanksimgController::class, "show"]
-// )->middleware(['auth'])->name("thanks_img_index");
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get(
+    '/dashboard',
+    [App\Http\Controllers\MypageController::class, "index"]
+)->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

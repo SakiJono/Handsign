@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 
 use Validator;
 use App\Models\Thanks_img;
+use Auth;
 
 class ThanksimgController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +25,9 @@ class ThanksimgController extends Controller
     {
         $uploads = Thanks_img::orderBy("id", "desc")->get();
 
-        return view("tanks_img.index", [
+        return view("thanks_img.index", [
             "images" => $uploads
-        ]); 
+        ]);
     }
 
     /**
@@ -30,7 +37,7 @@ class ThanksimgController extends Controller
      */
     public function create()
     {
-        return view('tanks_img.create'); //
+        return view('thanks_img.create'); //
     }
 
     public function upload(Request $request)
@@ -79,6 +86,8 @@ class ThanksimgController extends Controller
     public function show($id)
     {
 
+        $image = Thanks_img::find($id);
+        return view('thanks_img.show', ['image' => $image]);
     }
 
     /**
@@ -112,6 +121,7 @@ class ThanksimgController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = Thanks_img::find($id)->delete();
+        return redirect()->route('thanks_img.index'); //
     }    //
 }

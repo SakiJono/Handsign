@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use Validator;
 use App\Models\Handsign;
+use App\Models\Video;
 use App\Models\Thanks_img;
 use Auth;
 
-class HandsignController extends Controller
+
+class MypageController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +18,14 @@ class HandsignController extends Controller
      */
     public function index()
     {
-        $uploads = Handsign::orderBy("id", "desc")->get();
+        $handsigns = Handsign::orderBy("id", "desc")->get();
+        $videos = Video::orderBy("id", "desc")->get();
+        $tanksimgs = Thanks_img::orderBy("id", "desc")->get();
 
-        return view("handsign.index", [
-            "images" => $uploads
+        return view("dashboard", [
+            "handsigns" => $handsigns,
+            "videos" => $videos,
+            "tanksimgs" => $tanksimgs
         ]);
     }
 
@@ -36,33 +36,7 @@ class HandsignController extends Controller
      */
     public function create()
     {
-        return view('handsign.create');
-    }
-
-    public function upload(Request $request)
-    {
-        $request->validate([
-            'handsign_img' => 'required|file|image|mimes:png,jpeg,jpg,gif',
-            'handsign' => 'required | max:191',
-        ]);
-        $upload_image = $request->file('handsign_img');
-        $title = $request->input('handsign');
-
-
-        if ($upload_image) {
-            //アップロードされた画像を保存する
-            $path = $upload_image->store('handsign', "public");
-            //画像の保存に成功したらDBに記録する
-            if ($path) {
-                Handsign::create([
-                    "file_name" => $upload_image->getClientOriginalName(),
-                    "file_path" => $path,
-                    "file_title" => $title,
-                ]);
-            }
-        }
-
-        return redirect("/handsign");
+        //
     }
 
     /**

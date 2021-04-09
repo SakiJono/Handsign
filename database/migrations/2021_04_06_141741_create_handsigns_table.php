@@ -15,8 +15,9 @@ class CreateHandsignsTable extends Migration
     {
         Schema::create('handsigns', function (Blueprint $table) {
             $table->id();
-            $table->string('handsign_name');
-            $table->string('handsign_img');
+            $table->string('file_title');
+            $table->string('file_name');
+            $table->string('file_path');
             $table->timestamps();
         });
     }

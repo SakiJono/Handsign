@@ -50,16 +50,19 @@ class LocalDevelopSeeder extends Seeder
         ]);
 
         \App\Models\Handsign::create([
-            'handsign_name' => 'こんにちは',
-            'handsign_img' => 'こんにちは.jpg',
+            'file_title' => 'こんにちは',
+            'file_name' => 'こんにちは.jpg',
+            'file_path' => 'こんにちは.jpg',
         ]);
         \App\Models\Handsign::create([
-            'handsign_name' => 'ありがとう',
-            'handsign_img' => 'ありがとう.jpg',
+            'file_title' => 'ありがとう',
+            'file_name' => 'ありがとう.jpg',
+            'file_path' => 'ありがとう.jpg',
         ]);
         \App\Models\Handsign::create([
-            'handsign_name' => 'さよなら',
-            'handsign_img' => 'さよなら.jpg',
+            'file_title' => 'さよなら',
+            'file_name' => 'さよなら.jpg',
+            'file_path' => 'さよなら.jpg',
         ]);
 
         \App\Models\Thanks_img::create([
