@@ -15,9 +15,10 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('handsign_id');
-            $table->string('video_file');
+            // $table->integer('user_id')->nullable()->change();
+            // $table->integer('handsign_id')->nullable()->change();
+            $table->string('file_name');
+            $table->string('file_path');
             $table->timestamps();
         });
     }

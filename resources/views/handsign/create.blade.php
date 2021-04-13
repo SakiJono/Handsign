@@ -14,10 +14,10 @@
                 @csrf
                 <div>
                     <label for="handsign">手話表現の意味</label>
-                    <input type="text" name="handsign" id="handsign" accept="image/png, image/jpg,image/jpeg, image/gif">
+                    <input type="text" name="handsign" id="handsign" >
                 </div>
                 <div>
-                    <input type="file" name="handsign_img" id="handsign_img">
+                    <input type="file" name="handsign_img" id="handsign_img" accept="image/png, image/jpg, image/jpeg, image/gif">
                 </div>
                 <button type="submit"> Create </button>
                 </form>

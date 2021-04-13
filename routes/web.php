@@ -33,6 +33,11 @@ Route::post(
     [App\Http\Controllers\ThanksimgController::class, "upload"]
 )->middleware(['auth'])->name("thanks_img");
 
+Route::post(
+    'video',
+    [App\Http\Controllers\VideoController::class, "upload"]
+)->middleware(['auth'])->name("video");
+
 Route::get('/', function () {
     return view('welcome');
 });

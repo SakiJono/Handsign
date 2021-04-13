@@ -27,8 +27,7 @@
     <p>投稿したビデオ</p>
         @foreach($videos as $video)
                 <div style="width: 18rem; float:left; margin: 16px;">
-                <img src="{{ Storage::url($video->file_path) }}" style="width:100%;"/>
-                <p>{{ $video->file_title }}</p>
+                <video src="{{ Storage::url($video->file_path) }}" controls style="width:100%;"></video>
                 </div>
         @endforeach
 

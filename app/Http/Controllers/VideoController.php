@@ -31,6 +31,21 @@ class VideoController extends Controller
     {
         //
     }
+    public function upload(Request $request)
+    {
+        // return json_encode(['hoge' => $request]);
+        // exit();
+
+        $upload_video = $request->savevideo;
+        $path = $upload_video->store('video', "public");
+        //画像の保存に成功したらDBに記録する
+        if ($path) {
+            Video::create([
+                "file_name" => $upload_video->getClientOriginalName(),
+                "file_path" => $path,
+            ]);
+        }
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -14,10 +14,10 @@
                 @csrf
                 <div>
                     <label for="file_title">ファイル名</label>
-                    <input type="text" name="file_title" id="file_title" accept="image/png, image/jpg,image/jpeg, image/gif">
+                    <input type="text" name="file_title" id="file_title" >
                 </div>
                 <div>
-                    <input type="file" name="thanksimg" id="thanksimg">
+                    <input type="file" name="thanksimg" id="thanksimg" accept="image/png, image/jpg,image/jpeg, image/gif">
                 </div>
                 <button type="submit"> Create </button>
                 </form>
