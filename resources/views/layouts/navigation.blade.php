@@ -5,30 +5,29 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="/">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('マイページ') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('video.index')" :active="request()->routeIs('video.recvideo')">
-                        {{ __('動画投稿') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('thanks_img.index')" :active="request()->routeIs('thanks_img.index')">
-                        {{ __('イラストページ') }}
+                        {{ __('ホーム') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('handsign.index')" :active="request()->routeIs('handsign')">
                         {{ __('募集中の手話表現') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('video.index')" :active="request()->routeIs('video.index')">
+                        {{ __('投稿済み動画') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('thanks_img.index')" :active="request()->routeIs('thanks_img.index')">
+                        {{ __('手話イラスト') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -79,22 +78,22 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('マイページ') }}
-            </x-responsive-nav-link>
-        </div>
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('video.index')" :active="request()->routeIs('video.recvideo')">
-                {{ __('動画投稿') }}
-            </x-responsive-nav-link>
-        </div>
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('thanks_img.index')" :active="request()->routeIs('thanks_img.index')">
-                {{ __('イラストページ') }}
+                {{ __('HOME') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('handsign.index')" :active="request()->routeIs('handsign.index.index')">
                 {{ __('募集中の手話表現') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('video.index')" :active="request()->routeIs('video.index')">
+                {{ __('投稿済み動画') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('thanks_img.index')" :active="request()->routeIs('thanks_img.index')">
+                {{ __('手話イラスト') }}
             </x-responsive-nav-link>
         </div>
 

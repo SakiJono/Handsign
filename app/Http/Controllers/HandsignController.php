@@ -118,6 +118,7 @@ class HandsignController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = Handsign::find($id)->delete();
+        return redirect()->route('handsign.index'); //
     }
 }

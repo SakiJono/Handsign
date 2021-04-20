@@ -1,17 +1,48 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('投稿動画一覧画面') }}
-        </h2>
-    </x-slot>
-    <x-nav-link :href="route('handsign.create')" :active="request()->routeIs('handsign.create')">
-        {{ __('投稿動画') }}
-    </x-nav-link>
 
-    @foreach($videos as $video)
-                <div style="width: 18rem; float:left; margin: 16px;">
-                <video src="{{ Storage::url($video->file_path) }}" style="width:100%;"></video>
-                </div>
-        @endforeach
+    <style>
+        .section{
+            width: 80%;
+            margin: auto;
+        }
+
+        .content{
+            display:flex;
+            justify-content: space-between;
+            flex-wrap:wrap;
+        }
+
+        .contentbox{
+            width: 250px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .button{
+            color: #888;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .button:hover{
+            color: #333
+        }
+
+    </style>
+
+    <section class="section">
+        <div class="content">
+            @foreach($videos as $video)
+            <div class="contentbox">
+                <video src="{{ Storage::url($video->file_path) }}" controls></video>
+                <form action="{{ route('video.destroy',$video->id) }}" method="POST">
+                    @method('delete')
+                    @csrf
+                    <button type="submit" class="button">動画を削除</button>
+                </form>
+            </div>
+            @endforeach
+        </div>
+    </section>
 
 </x-app-layout>

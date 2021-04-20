@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Handsign;
 use Illuminate\Http\Request;
 use App\Models\Video;
 use Auth;
@@ -19,7 +20,11 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('video.recvideo'); //
+        $videos = Video::orderBy("id", "desc")->get();
+
+        return view('video.index', [
+            "videos" => $videos
+        ]);
     }
 
     /**
@@ -66,7 +71,8 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        $image = Handsign::find($id);
+        return view('video.recvideo', ['image' => $image]); //
     }
 
     /**
@@ -100,6 +106,7 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = Video::find($id)->delete();
+        return redirect()->route('video.index'); ////
     }
 }

@@ -1,5 +1,14 @@
 <x-guest-layout>
     <x-auth-card>
+        <style>
+            .logoback{
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
+            position:relative;
+            }
+        </style>
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />

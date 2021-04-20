@@ -1,27 +1,107 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('ビデオ録画の画面') }}
-        </h2>
-    </x-slot>
 
-    <div class="camera">
-        <video id="localvideo" autoplay width="600px"></video>
-    </div>
-    <button id="start">start!!</button>
-    <button id="stop">stop!!</button>
-    <button id="record">5秒間の録画開始</button>
-    <button type="submit" id="savebutton"> save </button>
-    <video id="testvideo" width="600px"></video>
-    {{-- <div>
-        @include('common.errors')
-                <form class="mb-6" action="{{ route('video') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                    <input type="hidden" name="savevideo" id="savevideo">
-                    <button type="submit" id="savebutton"> save </button>
-                </form>
-    </div> --}}
+    <style>
+        .section{
+            width: 70%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
 
+        .camera{
+            position: relative;
+            background-color: #a3a3a3;
+            width: 600px;
+            height: 60vh;
+        }
+
+        .localvideo{
+            width: 600px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .testvideo{
+            width: 600px;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .buttonbox{
+            display: flex;
+            justify-content: center;
+        }
+
+        .buttons{
+            position: relative;
+            margin: 10px;
+            width: 200px;
+            height: 70px;
+        }
+
+        .upbutton{
+            margin: 10px 0 0 0;
+            width: 200px;
+            height: 70px;
+            background-color: #7FC161;
+            background-size: contain;
+            background-image: url("../img/ボタン用.png");
+            border-radius: 5px;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 5px 5px 0 #333;
+        }
+
+        .beforebutton{
+            z-index: 3;
+            position: absolute;
+        }
+
+        .clickbutton{
+            position: absolute;
+            z-index: 1;
+            top: 0;
+        }
+
+        .recbutton{
+            display: none;
+        }
+
+        .img{
+            width:250px;
+        }
+
+    </style>
+
+    <section class="section">
+        <div >
+            <img src="{{ Storage::url($image->file_path) }}" class="img">
+            <p>{{ $image->file_title }}の手話表現を録画してください</p>
+        </div>
+
+        <div>
+            <div class="camera">
+                <video id="localvideo" autoplay class="localvideo"></video>
+                <video id="testvideo" class="testvideo"></video>
+            </div>
+            <div class="buttonbox">
+                <div class="buttons">
+                    <button id="start" class="upbutton beforebutton">カメラの起動</button>
+                    <button id="stop" class="upbutton clickbutton">カメラの停止</button>
+                </div>
+                <div id="recbutton" class="buttons recbutton">
+                    <button id="record" class="upbutton beforebutton">5秒間の録画開始</button>
+                    <button type="submit" id="savebutton" class="upbutton clickbutton"> 保存 </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
 
 
@@ -34,10 +114,13 @@ const stop = document.getElementById('stop');
 const record = document.getElementById('record');
 const savevideo = document.getElementById('savevideo');
 const savebutton = document.getElementById('savebutton');
+const recbutton = document.getElementById('recbutton');
 let record_data = [];
 
 // カメラの起動
     start.onclick = function(){
+        stop.style.zIndex = 3;
+        recbutton.style.display = "block";
         startVideo();
     }
 
@@ -48,6 +131,7 @@ let record_data = [];
             localvideo.playsInline = true;
             const recorder = new MediaRecorder(stream);
             record.onclick = function(){
+                savebutton.style.zIndex = 3;
                 recorder.start();
                 function timeup() {
                     recorder.stop();
@@ -59,6 +143,7 @@ let record_data = [];
             testvideo.setAttribute('controls', '');
             var outputdata = window.URL.createObjectURL(e.data);
             record_data.push(e.data)
+            testvideo.style.display = "block";
             testvideo.src = outputdata;
 
             };
@@ -74,6 +159,7 @@ let record_data = [];
 
 // カメラの停止
     stop.onclick = function(){
+        stop.style.zIndex = 1;
         stopStreamedVideo(localvideo);
     }
 
@@ -101,7 +187,7 @@ let record_data = [];
     })
     .then(res => {
     console.log(res);
-    window.location.href = '{{ url('/dashboard') }}';
+    window.location.href = '{{ url('/video') }}';
     }).catch(error => {
         new Error(error)
     });

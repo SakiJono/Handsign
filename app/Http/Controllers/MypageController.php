@@ -18,15 +18,16 @@ class MypageController extends Controller
      */
     public function index()
     {
-        $handsigns = Handsign::orderBy("id", "desc")->get();
-        $videos = Video::orderBy("id", "desc")->get();
-        $tanksimgs = Thanks_img::orderBy("id", "desc")->get();
+        // $handsigns = Handsign::orderBy("id", "desc")->get();
+        // $videos = Video::orderBy("id", "desc")->get();
+        // $thanksimgs = Thanks_img::orderBy("id", "desc")->get();
 
-        return view("dashboard", [
-            "handsigns" => $handsigns,
-            "videos" => $videos,
-            "tanksimgs" => $tanksimgs
-        ]);
+        // return view("dashboard", [
+        //     "handsigns" => $handsigns,
+        //     "videos" => $videos,
+        //     "tanksimgs" => $thanksimgs
+        // ]);
+        return view("dashboard");
     }
 
     /**
