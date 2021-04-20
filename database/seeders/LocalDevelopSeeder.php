@@ -81,25 +81,6 @@ class LocalDevelopSeeder extends Seeder
             'file_title' => 'file_titleThanks3.jpg',
         ]);
 
-        \App\Models\Video::create([
-            // 'user_id' => '2',
-            // 'handsign_id' => '1',
-            'file_name' => 'video1.mov',
-            'file_path' => 'video1.mov',
-        ]);
-        \App\Models\Video::create([
-            // 'user_id' => '2',
-            // 'handsign_id' => '3',
-            'file_name' => 'video2.mov',
-            'file_path' => 'video2.mov',
-        ]);
-        \App\Models\Video::create([
-            // 'user_id' => '3',
-            // 'handsign_id' => '1',
-            'file_name' => 'video3.mov',
-            'file_path' => 'video3.mov',
-        ]);
-
         \App\Models\Have_img::create([
             'user_id' => '2',
             'img_id' => '1',

@@ -42,12 +42,16 @@ class VideoController extends Controller
         // exit();
 
         $upload_video = $request->savevideo;
+        $handsignid = $request->handsign;
+        $userid = $request->userid;
         $path = $upload_video->store('video', "public");
         //画像の保存に成功したらDBに記録する
         if ($path) {
             Video::create([
                 "file_name" => $upload_video->getClientOriginalName(),
                 "file_path" => $path,
+                "userid" => $userid,
+                "handsignid" => $handsignid,
             ]);
         }
     }

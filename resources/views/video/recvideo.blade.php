@@ -82,6 +82,7 @@
         <div >
             <img src="{{ Storage::url($image->file_path) }}" class="img">
             <p>{{ $image->file_title }}の手話表現を録画してください</p>
+            <p>{{Auth::user()->is_admin}}</p>
         </div>
 
         <div>
@@ -177,11 +178,15 @@ let record_data = [];
 // 保存処理
     function saveStreameVideo (record_data){
     var blob = new Blob(record_data, { type: 'video/webm' });
+    const id = '{{ $image->id }}'
+    const userid = '{{Auth::user()->is_admin}}'
     // console.log(blob.size);
     // document.getElementById('savevideo').value = blob.size;
     // window.URL.revokeObjectURL(url)
     const data = new FormData();
     data.append('savevideo', blob, new Date() +'video.webm');
+    data.append('handsign', id);
+    data.append('userid', userid);
     axios.post('/video', data, {
         headers: { 'content-type': 'multipart/form-data' }
     })
