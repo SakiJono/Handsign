@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use Validator;
 use App\Models\Handsign;
-use App\Models\Thanks_img;
 use Auth;
 
 class HandsignController extends Controller

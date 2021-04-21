@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HandsignController;
 use App\Http\Controllers\VideoController;
-use App\Http\Controllers\ThanksimgController;
 use App\Http\Controllers\Controller;
 use App\Models\Handsign;
 
@@ -21,17 +20,11 @@ use App\Models\Handsign;
 Route::resource('dashboard', MypageController::class);
 Route::resource('video', VideoController::class);
 Route::resource('handsign', HandsignController::class);
-Route::resource('thanks_img', ThanksimgController::class);
 
 Route::post(
     'handsign',
     [App\Http\Controllers\HandsignController::class, "upload"]
 )->middleware(['auth'])->name("handsign");
-
-Route::post(
-    'thanks_img',
-    [App\Http\Controllers\ThanksimgController::class, "upload"]
-)->middleware(['auth'])->name("thanks_img");
 
 Route::post(
     'video',

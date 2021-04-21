@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Handsign;
 use App\Models\Video;
-use App\Models\Thanks_img;
 use Auth;
 
 

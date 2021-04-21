@@ -7,6 +7,9 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
         }
 
         .camera{
@@ -31,6 +34,7 @@
         .buttonbox{
             display: flex;
             justify-content: center;
+            width: 600px;
         }
 
         .buttons{
@@ -42,13 +46,13 @@
 
         .upbutton{
             margin: 10px 0 0 0;
-            width: 200px;
-            height: 70px;
+            width: 180px;
+            height: 60px;
             background-color: #7FC161;
             background-size: contain;
             background-image: url("../img/ボタン用.png");
             border-radius: 5px;
-            font-size: 18px;
+            font-size: 14px;
             color: #333;
             font-weight: bold;
             display: flex;
@@ -82,7 +86,8 @@
         <div >
             <img src="{{ Storage::url($image->file_path) }}" class="img">
             <p>{{ $image->file_title }}の手話表現を録画してください</p>
-            <p>{{Auth::user()->is_admin}}</p>
+            <p>録画時間は5秒間です</p>
+            <p>録画後動画を確認して保存をしてください</p>
         </div>
 
         <div>
@@ -99,6 +104,10 @@
                     <button id="record" class="upbutton beforebutton">5秒間の録画開始</button>
                     <button type="submit" id="savebutton" class="upbutton clickbutton"> 保存 </button>
                 </div>
+                <div class="buttons">
+                    <button id="reload" class="upbutton">やり直し</button>
+                </div>
+
             </div>
         </div>
 
@@ -116,7 +125,14 @@ const record = document.getElementById('record');
 const savevideo = document.getElementById('savevideo');
 const savebutton = document.getElementById('savebutton');
 const recbutton = document.getElementById('recbutton');
+const reload = document.getElementById('reload');
 let record_data = [];
+
+
+//やり直し
+    reload.onclick = function(){
+        location.reload(false);
+    }
 
 // カメラの起動
     start.onclick = function(){
@@ -161,6 +177,7 @@ let record_data = [];
 // カメラの停止
     stop.onclick = function(){
         stop.style.zIndex = 1;
+        recbutton.style.display = "none";
         stopStreamedVideo(localvideo);
     }
 

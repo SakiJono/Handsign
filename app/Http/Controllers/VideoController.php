@@ -20,7 +20,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::orderBy("id", "desc")->get();
+        $videos = Video::getMyvideo();
 
         return view('video.index', [
             "videos" => $videos

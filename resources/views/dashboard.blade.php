@@ -56,15 +56,4 @@
         @endforeach --}}
     </section>
 
-    <section class="navisection">
-        <img src="img/hana3.png" alt="" class="img">
-        <a href="{{ route('thanks_img.index')}}" class="link">手話イラストを見る</a>
-        {{-- @foreach($thanksimgs as $thanksimg)
-        <div>
-            <img src="{{ Storage::url($thanksimg->file_path) }}" style="width:100px;"/>
-            <p>{{ $thanksimg->file_title }}</p>
-        </div>
-        @endforeach --}}
-    </section>
-
 </x-app-layout>
