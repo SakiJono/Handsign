@@ -16,11 +16,11 @@ class Video extends Model
         'updated_at',
     ];
 
-    public static function getMyvideo()
-    {
-        $todos = self::where('userid', Auth::user()->id)
-            ->orderBy('id', 'desc')
-            ->get();
-        return $todos;
-    }
+    // public static function getMyvideo()
+    // {
+    //     $todos = self::where('userid', Auth::user()->id)
+    //         ->orderBy('id', 'desc')
+    //         ->get();
+    //     return $todos;
+    // }
 }

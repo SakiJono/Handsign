@@ -12,56 +12,24 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <style>
-            header{
-                width: 100%;
-                position: fixed;
-                background-color: white;
-                z-index: 3;
-            }
-
-            .headernavi{
-                width: 70%;
-                margin: auto;
-            }
-
-            .main{
-                width: 100%;
-                position: absolute;
-                z-index: 2;
-                top: 70px;
-            }
-
-            .backcolor{
-                position: absolute;
-                position: fixed;
-                width: 30%;
-                height: 100%;
-                background-color: #CBD5CF;
-                z-index: 1;
-                right: 0;
-            }
 
         </style>
 
     </head>
 
     <body>
-        <header>
-            <div class="headernavi">
+        <div class="home">
                 @include('layouts.navigation')
-            </div>
-        </header>
-
-        <div>
-            <main class="main">
-                {{ $slot }}
-            </main>
-            <div class="backcolor">
+            <div>
+                <main>
+                    {{ $slot }}
+                </main>
             </div>
         </div>
     </body>

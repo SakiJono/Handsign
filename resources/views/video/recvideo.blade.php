@@ -1,90 +1,14 @@
 <x-app-layout>
 
     <style>
-        .section{
-            width: 70%;
-            margin: 30px auto;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            font-size: 14px;
-            color: #333;
-            font-weight: bold;
-        }
 
-        .camera{
-            position: relative;
-            background-color: #a3a3a3;
-            width: 600px;
-            height: 60vh;
-        }
 
-        .localvideo{
-            width: 600px;
-            position: absolute;
-            z-index: 1;
-        }
-
-        .testvideo{
-            width: 600px;
-            position: absolute;
-            z-index: 2;
-        }
-
-        .buttonbox{
-            display: flex;
-            justify-content: center;
-            width: 600px;
-        }
-
-        .buttons{
-            position: relative;
-            margin: 10px;
-            width: 200px;
-            height: 70px;
-        }
-
-        .upbutton{
-            margin: 10px 0 0 0;
-            width: 180px;
-            height: 60px;
-            background-color: #7FC161;
-            background-size: contain;
-            background-image: url("../img/ボタン用.png");
-            border-radius: 5px;
-            font-size: 14px;
-            color: #333;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 2px 5px 5px 0 #333;
-        }
-
-        .beforebutton{
-            z-index: 3;
-            position: absolute;
-        }
-
-        .clickbutton{
-            position: absolute;
-            z-index: 1;
-            top: 0;
-        }
-
-        .recbutton{
-            display: none;
-        }
-
-        .img{
-            width:250px;
-        }
 
     </style>
 
-    <section class="section">
-        <div >
-            <img src="{{ Storage::url($image->file_path) }}" class="img">
+    <section class="recsection">
+        <div class="textbox">
+            <img src="{{ Storage::url($image->file_path) }}" class="img" width="250px">
             <p>{{ $image->file_title }}の手話表現を録画してください</p>
             <p>録画時間は5秒間です</p>
             <p>録画後動画を確認して保存をしてください</p>
@@ -107,11 +31,17 @@
                 <div class="buttons">
                     <button id="reload" class="upbutton">やり直し</button>
                 </div>
-
             </div>
         </div>
-
     </section>
+
+    <div class="thanks" id="thanks">
+        <div class="thanksillust">
+            <p>ご協力ありがとうございました！</p>
+            <img src="{{asset('img/お礼イラスト.png')}}" alt="" width="400px">
+            <a href="{{route('video.index')}}" class="pagelink"><button class="button">戻る</button>
+        </div></a>
+    </div>
 
 
 
@@ -126,6 +56,7 @@ const savevideo = document.getElementById('savevideo');
 const savebutton = document.getElementById('savebutton');
 const recbutton = document.getElementById('recbutton');
 const reload = document.getElementById('reload');
+const thanks = document.getElementById('thanks');
 let record_data = [];
 
 
@@ -148,10 +79,11 @@ let record_data = [];
             localvideo.playsInline = true;
             const recorder = new MediaRecorder(stream);
             record.onclick = function(){
-                savebutton.style.zIndex = 3;
+                record.disabled = true;
                 recorder.start();
                 function timeup() {
                     recorder.stop();
+                    savebutton.style.zIndex = 3;
                 };
                 setTimeout(timeup, 5000);
             };
@@ -164,12 +96,13 @@ let record_data = [];
             testvideo.src = outputdata;
 
             };
-        }).catch(function (error) { // 失敗時の処理はこちら.
+        }).catch(function (error) { // 失敗時の処理
         console.error('mediaDevice.getUserMedia() error:', error);
         return;
         });
             savebutton.onclick = function(){
                 saveStreameVideo(record_data);
+                savebutton.disabled = true;
             }
     }
 
@@ -196,10 +129,7 @@ let record_data = [];
     function saveStreameVideo (record_data){
     var blob = new Blob(record_data, { type: 'video/webm' });
     const id = '{{ $image->id }}'
-    const userid = '{{Auth::user()->is_admin}}'
-    // console.log(blob.size);
-    // document.getElementById('savevideo').value = blob.size;
-    // window.URL.revokeObjectURL(url)
+    const userid = '{{Auth::user()->id}}'
     const data = new FormData();
     data.append('savevideo', blob, new Date() +'video.webm');
     data.append('handsign', id);
@@ -208,8 +138,9 @@ let record_data = [];
         headers: { 'content-type': 'multipart/form-data' }
     })
     .then(res => {
-    console.log(res);
-    window.location.href = '{{ url('/video') }}';
+    thanks.style.display = 'flex'
+    stopStreamedVideo(localvideo);
+    // window.location.href = '{{ url('/video') }}';
     }).catch(error => {
         new Error(error)
     });

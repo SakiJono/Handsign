@@ -1,48 +1,23 @@
 <x-app-layout>
 
-    <style>
-        .section{
-            width: 80%;
-            margin: auto;
-        }
-
-        .content{
-            display:flex;
-            justify-content: space-between;
-            flex-wrap:wrap;
-        }
-
-        .contentbox{
-            width: 250px;
-            margin: 20px;
-            text-align: center;
-        }
-
-        .button{
-            color: #888;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .button:hover{
-            color: #333
-        }
-
-    </style>
 
     <section class="section">
         <div class="content">
             @foreach($videos as $video)
-            <div class="contentbox">
-                <video src="{{ Storage::url($video->file_path) }}" controls></video>
+            <div class="contentbox"  id="contentbox">
+                <video src="{{ Storage::url($video->file_path) }}" controls class="video"></video>
+                <p class="filetitle">{{$video->file_title}}</p>
+                @if (Auth::user()->id == $video->userid)
                 <form action="{{ route('video.destroy',$video->id) }}" method="POST">
                     @method('delete')
                     @csrf
-                    <button type="submit" class="button">動画を削除</button>
+                    <button type="submit" class="delbutton">×</button>
                 </form>
+                @endif
             </div>
             @endforeach
         </div>
     </section>
+
 
 </x-app-layout>

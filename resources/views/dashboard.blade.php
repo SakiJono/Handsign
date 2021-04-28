@@ -1,32 +1,6 @@
 <x-app-layout>
 
-    <style>
-        @import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 
-        .navisection{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .img{
-            width: 40%;
-
-        }
-
-        .link{
-            width: 30%;
-            height: 50px;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 18px;
-            color: #333;
-            font-weight: bold;
-            font-family: 'Noto Sans JP', sans-serif;
-
-        }
-
-    </style>
 
     <div class="explanation" id="explanation">
 
@@ -34,26 +8,21 @@
 
 
     <section class="navisection">
-        <img src="img/hana1.png" alt="" class="img">
-        <a href="{{ route('handsign.index')}}" class="link">募集中の手話表現を見る</a>
-        {{-- @foreach($handsigns as $handsign)
-        <a href="{{ route('thanks_img.show',$handsign->id) }}">
-            <div>
-                <img src="{{ Storage::url($handsign->file_path) }}" style="width:100%;"/>
-                <p>{{ $handsign->file_title }}</p>
-            </div>
-        </a>
-        @endforeach --}}
-    </section>
-
-    <section class="navisection">
-        <a href="{{ route('video.index')}}" class="link">投稿済みの動画を見る</a>
-        <img src="img/hana2.png" alt="" class="img">
-        {{-- @foreach($videos as $video)
-        <div>
-            <video src="{{ Storage::url($video->file_path) }}" controls style="width:100px;"></video>
+        <div class="imgbox">
+            <a href="{{ route('handsign.index')}}" ><img src="img/ありがとう.gif" alt="" width="300px"></a>
+            <img src="img/クリック.gif" alt="" width="100px" class="clickimg">
         </div>
-        @endforeach --}}
-    </section>
+        <div class="textbox">
+            <div  class="h1title">
+                <h1>使い方</h1>
+            </div>
+            <p>
+                <a href="{{ route('handsign.index')}}" class="underline">①募集中の手話表現</a>
+                の中から、<br>投稿する表現のイラストを選択してください。
+            </p>
 
+            <p>②カメラを起動し5秒間で手話表現の動画を<br>撮影してください。</p>
+            <p>③投稿して頂いた動画は<a href="{{ route('video.index')}}" class="underline">投稿済みの動画を見る</a><br>から確認出来ます。</p>
+        </div>
+    </section>
 </x-app-layout>

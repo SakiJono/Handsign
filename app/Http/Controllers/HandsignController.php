@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\Handsign;
 use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class HandsignController extends Controller
 {
@@ -35,7 +36,11 @@ class HandsignController extends Controller
      */
     public function create()
     {
-        return view('handsign.create');
+        if (Auth::user()->is_admin == 1) {
+            return view('handsign.create');
+        } else {
+            return redirect("/handsign");
+        }
     }
 
     public function upload(Request $request)

@@ -21,7 +21,7 @@
     <div class="explanation" id="explanation">
         @if (Route::has('login'))
         <div class="header">
-            <img src="img/logo文字なし.png" alt="" class="logo">
+            <img src="img/logo文字なし.png" alt="" class="logo2">
             <div class="anchorbox">
                 @auth
                 <a href="{{ url('/dashboard') }}" class="anchor">マイページ</a>

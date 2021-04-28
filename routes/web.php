@@ -26,6 +26,7 @@ Route::post(
     [App\Http\Controllers\HandsignController::class, "upload"]
 )->middleware(['auth'])->name("handsign");
 
+
 Route::post(
     'video',
     [App\Http\Controllers\VideoController::class, "upload"]

@@ -20,10 +20,13 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::getMyvideo();
+        $videos = Video::join("handsigns", "handsigns.id", '=', 'videos.handsignid')
+            ->select('videos.*', 'handsigns.file_title')
+            ->get();
+        // ddd($videos);
 
         return view('video.index', [
-            "videos" => $videos
+            "videos" => $videos,
         ]);
     }
 
@@ -75,8 +78,11 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        $image = Handsign::find($id);
-        return view('video.recvideo', ['image' => $image]); //
+        if ($image = Handsign::find($id)) {
+            return view('video.recvideo', ['image' => $image]); //
+        } else {
+            return redirect("/handsign");
+        }
     }
 
     /**

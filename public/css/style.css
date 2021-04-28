@@ -58,10 +58,14 @@ main{
 }
 
 .explanation{
+    background-color: white;
     display: none;
     width: 1000px;
     height: auto;
     margin: auto;
+    margin-top: 100px;
+    box-shadow: 2px 10px 10px 0 #999;
+    border-radius: 5px;
 }
 
 .header{
@@ -69,17 +73,18 @@ main{
     align-items: center;
     justify-content: space-between;
     padding-top: 30px;
-    height: 50px;
     border-bottom: 2px solid #acacac;
 }
 
-.logo{
+.logo2{
     width:100px;
     height: auto;
-    margin-left: 10px;
+    margin-left: 40px;
+    margin-bottom: 10px;
 }
 
 .anchorbox{
+    margin-right: 40px;
     display: flex;
     text-align: right;
 }
@@ -95,7 +100,7 @@ main{
 .section1box{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .section1title{
@@ -113,11 +118,11 @@ main{
 
 .buttonbox{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .button{
-    margin: 10px 0 10px 20px;
+    margin: 10px 20px 40px 20px;
     width: 200px;
     height: 70px;
     background-color: #7FC161;
@@ -131,4 +136,268 @@ main{
     justify-content: center;
     align-items: center;
     box-shadow: 2px 5px 5px 0 #333;
+}
+
+/* ホーム画面 */
+
+.home{
+    background-color: white;
+    width: 1000px;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+    box-shadow: 2px 10px 10px 0 #999;
+    border-radius: 5px;
+    padding-bottom: 60px;
+}
+
+/* ナビ */
+
+.user{
+    margin: 10px 0 10px 0;
+    text-decoration: none;
+    font-size: 18px;
+    color: #555;
+}
+
+.pagelink1{
+    margin-left: 40px;
+    width: 250px;
+    height: 50px;
+    background-image: url(../img/メニュー右.png);
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagelink2{
+    margin-left: 40px;
+    width: 250px;
+    height: 50px;
+    background-image: url(../img/メニュー左.png);
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagelink{
+
+    padding: 10px 30px 10px 30px;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.linkbox{
+    display: flex;
+    justify-content: center;
+}
+
+.navisection{
+    margin-top: 30px;
+    justify-content: center;
+    display: flex;
+}
+
+.imgbox{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.clickimg{
+    margin-right: 40px;
+}
+
+.h1title{
+    margin-bottom: 10px;
+    background-image: url(../img/ボタン用.png);
+    background-size: contain;
+    width: 200px;
+    height: 70px;
+    color: #456255;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.underline{
+    background: linear-gradient(transparent 50%, #61f85c 50%);
+    text-decoration: none;
+}
+
+.textbox{
+    display: flex;
+    flex-direction: column;
+}
+
+.textbox p{
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* 手話イラスト一覧画面 */
+.content{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+.contentbox{
+    width: 220px;
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+}
+
+.delbutton{
+    color: #888;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    right: 10px;
+    text-shadow :2px  2px 2px white,
+    2px -2px 2px white,
+    -2px -2px 2px white,
+    -2px 2px 2px white;
+
+}
+
+.img{
+    z-index: 1;
+}
+
+.video{
+    z-index: 1;
+}
+
+.section{
+    margin-top: 40px;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.form img{
+    margin: 0 20px 0 20px;
+}
+
+.form input{
+    margin: 0 0 20px 0;
+}
+
+.up{
+    margin: 0;
+}
+
+.filetitle{
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* 録画画面 */
+.recsection{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.camera{
+    position: relative;
+    background-color: #a3a3a3;
+    width: 600px;
+    height: 60vh;
+}
+
+.localvideo{
+    width: 600px;
+    position: absolute;
+    z-index: 1;
+}
+
+.testvideo{
+    width: 600px;
+    position: absolute;
+    z-index: 2;
+}
+
+.buttons{
+    position: relative;
+    margin: 10px;
+    width: 180px;
+    height: 70px;
+}
+
+.upbutton{
+    margin: 10px 0 0 0;
+    width: 180px;
+    height: 60px;
+    background-color: #7FC161;
+    background-size: contain;
+    background-image: url("../img/ボタン用.png");
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 5px 5px 0 #333;
+}
+
+.beforebutton{
+    z-index: 3;
+    position: absolute;
+}
+
+.clickbutton{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+
+.recbutton{
+    display: none;
+}
+
+.thanks{
+    display: none;
+    width: 1000px;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    z-index: 10;
+}
+
+.thanksillust{
+    width: 1000px;
+    background-color: rgb(234, 250, 213);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thanksillust p{
+    font-size: 24px;
+    color: #555;
+    font-weight: bold;
+    margin-top: 20px;
 }
