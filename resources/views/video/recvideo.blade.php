@@ -80,6 +80,7 @@ let record_data = [];
             const recorder = new MediaRecorder(stream);
             record.onclick = function(){
                 record.disabled = true;
+                record.style.backgroundColor = '#a3a3a3';
                 recorder.start();
                 function timeup() {
                     recorder.stop();
